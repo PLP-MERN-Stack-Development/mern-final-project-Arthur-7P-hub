@@ -6,8 +6,8 @@ import http from "http";
 import { Server } from "socket.io";
 
 // Import routes
-import authRoutes from "./routes/auth.js"; // Only auth routes here
-import userRoutes from "./routes/users.js"; // For user management
+import authRoutes from "./routes/auth.js"; 
+import userRoutes from "./routes/users.js";
 import jobRoutes from "./routes/jobs.js";
 
 dotenv.config();
@@ -29,9 +29,9 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use("/api/auth", authRoutes);   // REGISTER / LOGIN
-app.use("/api/users", userRoutes);  // Other user operations (no register/login)
-app.use("/api/jobs", jobRoutes);    // Jobs CRUD
+app.use("/api/auth", authRoutes); 
+app.use("/api/users", userRoutes);
+app.use("/api/jobs", jobRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
