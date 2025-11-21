@@ -1,52 +1,213 @@
-# MERN Stack Capstone Project
+# MERN Capstone Project – Week 8
 
-This assignment focuses on designing, developing, and deploying a comprehensive full-stack MERN application that showcases all the skills you've learned throughout the course.
+## Project Name
+**MERN Final Project**  
 
-## Assignment Overview
+**Owner:** Arthur Kariuki (Audio Alchemist)  
+**GitHub Repository:** [Link](https://github.com/PLP-MERN-Stack-Development/mern-final-project-Arthur-7P-hub)
 
-You will:
-1. Plan and design a full-stack MERN application
-2. Develop a robust backend with MongoDB, Express.js, and Node.js
-3. Create an interactive frontend with React.js
-4. Implement testing across the entire application
-5. Deploy the application to production
+---
 
-## Getting Started
+## 1. Project Overview
+This is a full-stack MERN application demonstrating:
 
-1. Accept the GitHub Classroom assignment
-2. Clone the repository to your local machine
-3. Follow the instructions in the `Week8-Assignment.md` file
-4. Plan, develop, and deploy your capstone project
+- MongoDB database design
+- Express.js RESTful API development
+- React frontend with real-time features (Socket.io)
+- Authentication & Authorization
+- Testing with Postman
+- Deployment on Render (backend) and Netlify (frontend)
 
-## Files Included
+**Features Implemented:**
 
-- `Week8-Assignment.md`: Detailed assignment instructions
+- User Registration & Login (JWT Auth)
+- Job posting & real-time updates
+- Frontend connected to backend
+- Responsive UI
 
-## Requirements
+---
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git and GitHub account
-- Accounts on deployment platforms (Render/Vercel/Netlify/etc.)
+## 2. Folder Structure
 
-## Project Ideas
+mern-final-project-Arthur-7P-hub/
+│
+├─ backend/
+│ ├─ models/
+│ ├─ routes/
+│ ├─ middleware/
+│ ├─ server.js
+│ └─ .env (not committed)
+│
+├─ client/
+│ ├─ src/
+│ │ ├─ api/
+│ │ │ └─ api.js
+│ │ ├─ App.js
+│ │ └─ index.js
+│ ├─ public/
+│ └─ package.json
+│
+├─ .gitignore
+└─ README.md
 
-The `Week8-Assignment.md` file includes several project ideas, but you're encouraged to develop your own idea that demonstrates your skills and interests.
 
-## Submission
+---
 
-Your project will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+## 3. Backend Setup
 
-1. Commit and push your code regularly
-2. Include comprehensive documentation
-3. Deploy your application and add the live URL to your README.md
-4. Create a video demonstration and include the link in your README.md
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
 
-## Resources
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [GitHub Classroom Guide](https://docs.github.com/en/education/manage-coursework-with-github-classroom) 
+Install dependencies:
+
+npm install
+
+
+Create .env file with:
+
+MONGO_URI=<Your MongoDB Atlas URI>
+JWT_SECRET=<Your JWT Secret>
+PORT=5000
+
+
+Run the server:
+
+npm run dev
+
+
+Backend deployed URL:
+Render
+
+API Routes:
+
+POST /api/auth/register – Register new user
+
+POST /api/auth/login – Login user
+
+GET /api/jobs – Get all jobs (requires token)
+
+POST /api/jobs – Create job (requires token)
+
+4. Frontend Setup
+
+Navigate to the client folder:
+
+cd client
+
+
+Install dependencies:
+
+npm install
+
+
+Create .env file:
+
+REACT_APP_API_URL=https://mern-capstone-backend-x48s.onrender.com/api
+
+
+Start frontend locally:
+
+npm start
+
+
+Frontend deployed URL:
+Netlify
+
+5. Postman Testing
+
+Use Postman to test the API:
+
+Register User
+
+Method: POST
+
+URL: https://mern-capstone-backend-x48s.onrender.com/api/auth/register
+
+Body (JSON):
+
+{
+  "name": "Arthur Test",
+  "email": "arthur_test8@example.com",
+  "password": "Mern8!"
+}
+
+
+Login User
+
+Method: POST
+
+URL: https://mern-capstone-backend-x48s.onrender.com/api/auth/login
+
+Body (JSON):
+
+{
+  "email": "arthur_test8@example.com",
+  "password": "Mern8!"
+}
+
+
+Create Job
+
+Method: POST
+
+URL: https://mern-capstone-backend-x48s.onrender.com/api/jobs
+
+Headers: Authorization: Bearer <token>
+
+Body (JSON):
+
+{
+  "title": "Frontend Developer",
+  "description": "Develop React components"
+}
+
+
+Get Jobs
+
+Method: GET
+
+URL: https://mern-capstone-backend-x48s.onrender.com/api/jobs
+
+Headers: Authorization: Bearer <token>
+
+✅ Expected Outcome:
+
+Register/Login returns token
+
+Create job returns new job object
+
+Get jobs returns array of jobs
+
+6. Screenshots for Submission
+
+Backend server running
+
+Postman testing success
+
+Frontend connected to backend
+
+Jobs page with real-time updates
+
+7. Notes
+
+All passwords are hashed using bcrypt
+
+JWT tokens expire in 7 days
+
+Socket.io handles real-time updates for job postings
+
+8. Submission Checklist
+
+ Backend pushed and deployed on Render
+
+ Frontend pushed and deployed on Netlify
+
+ Postman API tested successfully
+
+ README.md included
+
+ Screenshots captured
+
+ Environment variables kept secret
